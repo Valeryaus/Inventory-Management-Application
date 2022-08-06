@@ -5,9 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -45,5 +43,4 @@ public class Order {
     private Employee employee;
 
     private double finalPrice;
-
 }

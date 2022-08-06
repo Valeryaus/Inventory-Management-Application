@@ -42,17 +42,12 @@ public class Product {
     // sito lauko nesaugos i duomenubaze
     private Integer brandId;
 
-    // naujas join'as iki cia viskas veikia ;)
-
     @ManyToMany(mappedBy = "listOfProducts")
     private List<Order> orders = new ArrayList<>();
-
 
     @Override
     public String toString() {
         return partDescription;
     }
 }
-
 //po sito join'o susikure "products_orders" lentele su product_part_number_id ir su orders_order_id stulpeliais??!!
-

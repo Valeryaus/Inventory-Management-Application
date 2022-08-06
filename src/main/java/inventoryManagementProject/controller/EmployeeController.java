@@ -16,7 +16,6 @@ public class EmployeeController {
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
-
     }
 
     // handler method to handle list employees and return mode and view
@@ -45,9 +44,6 @@ public class EmployeeController {
 
     @GetMapping("/employees/edit/{id}")
     public String editEmployeeForm(@PathVariable(value = "id") Integer employeeId, Model model) {
-        // kitame projekte buvo panaudota "...@PathVariable(value = "id") long partNumberId..."
-        // ,nes kuriant aprasyma padaryta "private long partNumberId;" o cia "private Long partNumberId;";
-
         model.addAttribute("employee", employeeService.getEmployeeById(employeeId));
         return "edit_employee";
 
@@ -63,7 +59,6 @@ public class EmployeeController {
         existingEmployee.setEmployeeId(employeeId);
         existingEmployee.setEmployeeName(employee.getEmployeeName());
         existingEmployee.setEmployeeEmail(employee.getEmployeeEmail());
-
         // save updated employee object
         employeeService.updateEmployee(existingEmployee);
         return "redirect:/employees";

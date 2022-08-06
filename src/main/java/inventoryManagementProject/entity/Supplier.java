@@ -27,4 +27,8 @@ public class Supplier {
     @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
     private List<Product> products; // sukuriamas lenteliu sujungimui
 
+    public Supplier(String supplierBrand) {
+        this.supplierBrand = supplierBrand;
+
+    }
 }

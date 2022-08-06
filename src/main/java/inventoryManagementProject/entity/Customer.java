@@ -46,7 +46,6 @@ public class Customer {
         this.customerEmail = customerEmail;
     }
 
-
     public String getCustomerName() {
         return customerName;
     }

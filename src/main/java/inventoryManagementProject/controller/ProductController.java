@@ -53,8 +53,6 @@ public class ProductController {
 
     @GetMapping("/products/edit/{id}")
     public String editProductForm(@PathVariable(value = "id") Long partNumberId, Model model) {
-        // kitame projekte buvo panaudota "...@PathVariable(value = "id") long partNumberId..."
-        // ,nes kuriant aprasyma padaryta "private long partNumberId;" o cia "private Long partNumberId;";
         model.addAttribute("product", productService.getProductById(partNumberId));
         List<Supplier> allSuppliers = supplierService.getAllSuppliers();
         model.addAttribute("suppliers", allSuppliers);
@@ -84,7 +82,6 @@ public class ProductController {
     }
 
     // handler method to handle delete product request
-
     @GetMapping("/products/{id}")
     public String deleteProduct(@PathVariable(value = "id") Long partNumberId) {
         productService.deleteProductById(partNumberId);

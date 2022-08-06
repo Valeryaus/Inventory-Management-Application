@@ -27,7 +27,6 @@ public class SupplierController {
 
     @GetMapping("/suppliers/new")
     public String createSupplierForm(Model model) {
-
         // create supplier object to hold supplier form data
         Supplier supplier = new Supplier();
         model.addAttribute("supplier", supplier);
@@ -44,13 +43,11 @@ public class SupplierController {
 
     @GetMapping("/suppliers/edit/{id}")
     public String editSupplierForm(@PathVariable(value = "id") Integer supplierId, Model model) {
-        // kitame projekte buvo panaudota "...@PathVariable(value = "id") long partNumberId..."
-        // ,nes kuriant aprasyma padaryta "private long partNumberId;" o cia "private Long partNumberId;";
-
         model.addAttribute("supplier", supplierService.getSupplierById(supplierId));
         return "edit_supplier";
 
     }
+
     @PostMapping("/suppliers/{id}")
     public String updateSupplier(@PathVariable(value = "id") Integer supplierId,
                                  @ModelAttribute("supplier") Supplier supplier,
@@ -60,14 +57,12 @@ public class SupplierController {
         // iskelti iki 68 eilute i supplier service nauja metoda
         existingSupplier.setSupplierId(supplierId);
         existingSupplier.setSupplierBrand(supplier.getSupplierBrand());
-
         // save updated supplier object
         supplierService.updateSupplier(existingSupplier);
         return "redirect:/suppliers";
     }
 
     // handler method to handle delete supplier request
-
     @GetMapping("/suppliers/{id}")
     public String deleteSupplier(@PathVariable(value = "id") Integer supplierId) {
         supplierService.deleteSupplierById(supplierId);

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Inventory Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">List of Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/suppliers}">List of Suppliers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/customers}">List of Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employees}">List of Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/orders}">Order Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div><h2>Welcome to Inventory Management Application</h2></div>
+    <br>
+    <div>
+        <h5>
+            <p>It is basic Inventory Management application created with:
+                <br>- Java Spring Boot Web,
+                <br>- Spring Data JPA & Hibernate,
+                <br>- Thymeleaf,
+                <br>- MySQL Database;
+                <br>- Maven dependencies;
+                <!--        - JUnit & Spring Test;-->
+                <br>- HTML 5 & Bootstrap 4.
+                <br>Has possibility to create, delete and update: Products, Suppliers, Customers, Employees and Orders.
+            </p>
+        </h5>
+    </div>
+</div>
+</body>
+</html>

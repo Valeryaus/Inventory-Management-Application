@@ -34,74 +34,70 @@ public class OrderController {
     }
 
     // handler method to handle list orders and return mode and view
-        @GetMapping("/orders")
-        public String listOrders(Model model) {
-            model.addAttribute("orders", orderService.getAllOrders());
-            return "orders";
-        }
-
-        @GetMapping("/orders/new")
-        public String createOrderForm(Model model) {
-            // create order object to hold order form data
-            Order order = new Order();
-            model.addAttribute("order", order);
-
-            List<Customer> allCustomers = customerService.getAllCustomers();
-            model.addAttribute("customers", allCustomers);
-
-            List<Employee> allEmployees = employeeService.getAllEmployees();
-            model.addAttribute("employees", allEmployees);
-
-            List<Product> allProducts = productService.getAllProducts();
-            model.addAttribute("products", allProducts);
-
-            return "create_order";
-        }
-
-        @PostMapping("/orders")
-        public String saveOrder(@ModelAttribute("order") Order order) {
-            //pavaliduoti produkta prie ji saugant - sukuri nauja beansa-order validation
-            // service ir jis galetu tureti metoda validate order, arba/ir paziureti validacijas Thymeleafe...
-            orderService.saveOrder(order);
-            return "redirect:/orders";
-        }
-
-        @GetMapping("/orders/edit/{id}")
-        public String editOrderForm(@PathVariable(value = "id") Long orderId, Model model) {
-            // kitame projekte buvo panaudota "...@PathVariable(value = "id") long partNumberId..."
-            // ,nes kuriant aprasyma padaryta "private long partNumberId;" o cia "private Long partNumberId;";
-
-            List<Customer> allCustomers = customerService.getAllCustomers();
-            model.addAttribute("customers", allCustomers);
-
-            List<Employee> allEmployees = employeeService.getAllEmployees();
-            model.addAttribute("employees", allEmployees);
-
-            List<Product> allProducts = productService.getAllProducts();
-            model.addAttribute("products", allProducts);
-
-            model.addAttribute("order", orderService.getOrderById(orderId));
-            return "edit_order";
-
-        }
-
-        @PostMapping("/orders/{id}")
-        public String updateOrder(@PathVariable(value = "id") Long orderId,
-                @ModelAttribute("order") Order order,
-                Model model) {
-
-            // save updated order object
-            orderService.updateOrder(order);
-            return "redirect:/orders";
-        }
-
-        // handler method to handle delete order request
-
-        @GetMapping("/orders/{id}")
-        public String deleteOrder(@PathVariable(value = "id") Long orderId) {
-            orderService.deleteOrderById(orderId);
-            return "redirect:/orders";
-        }
+    @GetMapping("/orders")
+    public String listOrders(Model model) {
+        model.addAttribute("orders", orderService.getAllOrders());
+        return "orders";
     }
+
+    @GetMapping("/orders/new")
+    public String createOrderForm(Model model) {
+        // create order object to hold order form data
+        Order order = new Order();
+        model.addAttribute("order", order);
+
+        List<Customer> allCustomers = customerService.getAllCustomers();
+        model.addAttribute("customers", allCustomers);
+
+        List<Employee> allEmployees = employeeService.getAllEmployees();
+        model.addAttribute("employees", allEmployees);
+
+        List<Product> allProducts = productService.getAllProducts();
+        model.addAttribute("products", allProducts);
+
+        return "create_order";
+    }
+
+    @PostMapping("/orders")
+    public String saveOrder(@ModelAttribute("order") Order order) {
+        //pavaliduoti produkta prie ji saugant - sukuri nauja beansa-order validation
+        // service ir jis galetu tureti metoda validate order, arba/ir paziureti validacijas Thymeleafe...
+        orderService.saveOrder(order);
+        return "redirect:/orders";
+    }
+
+    @GetMapping("/orders/edit/{id}")
+    public String editOrderForm(@PathVariable(value = "id") Long orderId, Model model) {
+
+        List<Customer> allCustomers = customerService.getAllCustomers();
+        model.addAttribute("customers", allCustomers);
+
+        List<Employee> allEmployees = employeeService.getAllEmployees();
+        model.addAttribute("employees", allEmployees);
+
+        List<Product> allProducts = productService.getAllProducts();
+        model.addAttribute("products", allProducts);
+
+        model.addAttribute("order", orderService.getOrderById(orderId));
+        return "edit_order";
+
+    }
+
+    @PostMapping("/orders/{id}")
+    public String updateOrder(@PathVariable(value = "id") Long orderId,
+                              @ModelAttribute("order") Order order,
+                              Model model) {
+        // save updated order object
+        orderService.updateOrder(order);
+        return "redirect:/orders";
+    }
+
+    // handler method to handle delete order request
+    @GetMapping("/orders/{id}")
+    public String deleteOrder(@PathVariable(value = "id") Long orderId) {
+        orderService.deleteOrderById(orderId);
+        return "redirect:/orders";
+    }
+}
 
 
