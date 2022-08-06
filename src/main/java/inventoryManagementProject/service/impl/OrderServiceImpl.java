@@ -36,6 +36,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order updateOrder(Order order) {
+        // idejau nauja eilute, tam kad issaugoti Total Price po updeito
+        order.setFinalPrice(countTotalPrice(order));
         return orderRepository.save(order);
     }
 

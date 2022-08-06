@@ -71,6 +71,15 @@ public class OrderController {
             // kitame projekte buvo panaudota "...@PathVariable(value = "id") long partNumberId..."
             // ,nes kuriant aprasyma padaryta "private long partNumberId;" o cia "private Long partNumberId;";
 
+            List<Customer> allCustomers = customerService.getAllCustomers();
+            model.addAttribute("customers", allCustomers);
+
+            List<Employee> allEmployees = employeeService.getAllEmployees();
+            model.addAttribute("employees", allEmployees);
+
+            List<Product> allProducts = productService.getAllProducts();
+            model.addAttribute("products", allProducts);
+
             model.addAttribute("order", orderService.getOrderById(orderId));
             return "edit_order";
 
@@ -80,14 +89,9 @@ public class OrderController {
         public String updateOrder(@PathVariable(value = "id") Long orderId,
                 @ModelAttribute("order") Order order,
                 Model model) {
-            // get order from database by id
-            Order existingOrder = orderService.getOrderById(orderId);
-            // iskelti iki 68 eilute i order service nauja metoda
-            existingOrder.setOrderId(orderId);
-            existingOrder.setOrderDate(order.getOrderDate());
 
             // save updated order object
-            orderService.updateOrder(existingOrder);
+            orderService.updateOrder(order);
             return "redirect:/orders";
         }
 
