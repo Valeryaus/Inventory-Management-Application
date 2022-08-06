@@ -27,33 +27,4 @@ public class Supplier {
     @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
     private List<Product> products; // sukuriamas lenteliu sujungimui
 
-
-
-//    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "supplierProduct_fk", referencedColumnName = "supplierId")
-//
-//
-//    public Integer getSupplierId() {
-//        return supplierId;
-//    }
-//
-//    public void setSupplierId(Integer supplierId) {
-//        this.supplierId = supplierId;
-//    }
-//
-//    public String getSupplierBrand() {
-//        return supplierBrand;
-//    }
-//
-//    public void setSupplierBrand(String supplierBrand) {
-//        this.supplierBrand = supplierBrand;
-//    }
-//
-//    public Supplier() {
-//    }
-//
-//    public Supplier(String supplierBrand) {
-//        this.supplierBrand = supplierBrand;
-//    }
 }
-

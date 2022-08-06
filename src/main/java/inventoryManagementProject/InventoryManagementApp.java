@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// https://www.youtube.com/watch?v=VR1zoNomG3w iki 21:33 minites
 
 @SpringBootApplication
 public class InventoryManagementApp {
@@ -25,7 +24,6 @@ public class InventoryManagementApp {
     public static void main(String[] args) {
         SpringApplication.run(InventoryManagementApp.class, args);
     }
-
 
     @Bean
     public CommandLineRunner createData(ProductRepository productRepository,

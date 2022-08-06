@@ -37,7 +37,7 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
-        //pavaliduoti produkta prie ji saugant - sukuri nauja beansa-employee validation
+        //pavaliduoti produkta pries ji saugant - sukuri nauja beansa-employee validation
         // service ir jis galetu tureti metoda validate employee, arba/ir paziureti validacijas Thymeleafe...
         employeeService.saveEmployee(employee);
         return "redirect:/employees";
@@ -70,7 +70,6 @@ public class EmployeeController {
     }
 
     // handler method to handle delete employee request
-
     @GetMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable(value = "id") Integer employeeId) {
         employeeService.deleteEmployeeById(employeeId);
